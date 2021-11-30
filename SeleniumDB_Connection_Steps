@@ -1,0 +1,69 @@
+
+referenceUrl: https://www.guru99.com/database-testing-using-selenium-step-by-step-guide.html
+
+Note: need mySql Connector depencency or jar 
+
+Steps for JDBC Connecction
+
+1) Load JDBC driver  
+2) Create Database Connection.
+3) Create Statement 
+4) Execute Query 
+5) Perform operation using rs (ResulSet) object 
+6) Close Connection
+
+To check DB details follow below path
+WorkBench DB > Database > Connect to Database 
+
+To use Selenium Webdriver for Database Verification you need to use the JDBC (“Java Database Connectivity”).
+JDBC (Java Database Connectivity) is a SQL level API that allows you to execute SQL statements.
+It is responsible for the connectivity between the Java Programming language and a wide range of databases.
+The JDBC API provides the following classes and interfaces
+
+Driver Manager
+Driver
+Connection
+Statement
+ResultSet
+SQLException
+
+
+In Order to test ur db using selenium below steps needs to be executed.
+ 
+Step_1) Load the JDBC Driver using the code
+
+		[Code]
+		Class.forName("com.mysql.jdbc.Driver");
+		
+Steps_2) Make a connecction to Database
+		 Syntax: 
+		 DriverManager.getConnection(URL, “userid”, “password” )
+		 
+		 Userid is the username configured in the database
+		 Password of the configured user
+		 URL is of format jdbc:< dbtype>://ipaddress:portnumber/db_name”		 
+
+		 [Code]
+		 Connection con = DriverManager.getConnection(dbUrl,username,password); 
+		 
+Step_3) Once connection is made, you need to execute queries
+		can use Statement Object to send queries.
+				
+		[Code]
+		Statement stmt = con.createStatement();
+		
+Step_4) Once the statement object is created use the executeQuery method to execute the SQL queries
+		
+		[Code]
+		ResultSet rs = stmt.executeQuery(select *  from employee;);
+		
+Step_5) Results from the executed query are stored in the ResultSet Object.
+		
+		[Code]
+        rs.getString(ColumnName) + rs.getString(ColumnName) + rs.getString(ColumnName)
+        
+Step_6) Close Database Connection 
+
+		[Code]
+		rs.Close
+	
